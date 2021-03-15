@@ -36,7 +36,7 @@
 
 ## وفيما يلي مخطط ERD لنظامنا
 
-<img src="\chalet\database\ERD.png" alt="ERD">
+<img src="chalet\database\ERD.png" alt="ERD">
 
 ## العنوان
 المملكة العربية السعودية, الرياض ,حي الازدهار, طريق عثمان بن عفان
