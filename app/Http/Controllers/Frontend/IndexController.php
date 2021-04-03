@@ -168,7 +168,42 @@ class IndexController extends Controller
 
 
     }
+    public function customer()
+    {
+        $chalets = Chalet::all()->pluck('title', 'id');
+        $all_cities = City::all();
+        $all_categories = Category::all();
+        return view('frontend.customer', compact('all_cities', 'all_categories', 'chalets'));
+    }
 
+    public function store_customer(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required|numeric',
+            'chalet_id' => 'required',
+            'cin' => 'required',
+            'cout' => 'required'
+        ]);
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['mobile'] = $request->mobile;
+        $data['chalet_id'] = $request->chalet_id;
+        $data['cin'] = Carbon::parse($request->cin);
+        $data['cout'] = Carbon::parse($request->cout);
+
+        Customer::create($data);
+        return redirect()->route('frontend.index')->with([
+            'message' => 'Reserved Successfully',
+            'alert-type' => 'success'
+        ]);
+
+
+    }
     public function about()
     {
         $all_categories = Category::all();
