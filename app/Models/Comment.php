@@ -11,4 +11,9 @@ class Comment extends Model
     public function chalet(){
         return $this->belongsTo(Chalet::class);
     }
+
+    public function status()
+    {
+        return $this->status == 1 ? 'Active' : 'Inactive';
+    }
 }

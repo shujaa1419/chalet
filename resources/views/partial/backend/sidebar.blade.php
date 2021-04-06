@@ -38,19 +38,19 @@
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('dashboard.comments.index')}}">
             <i class="fas fa-comments"></i>
             <span>Comment</span></a>
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('dashboard.contacts.index')}}">
             <i class="fas fa-inbox"></i>
             <span>Contact</span></a>
     </li>
 
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{route('dashboard.customers.index')}}">
             <i class="fas fa-users"></i>
             <span>Customer</span></a>
     </li>

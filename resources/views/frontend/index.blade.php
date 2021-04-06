@@ -20,12 +20,12 @@
                         </ul>
                         <p>{!! \Illuminate\Support\Str::limit($chalet->description, 145, '...') !!}</p>
                         <div class="blog__btn">
-                            <a href="{{route('chalet.frontend.show',$chalet->id)}}">read more</a>
+                            <a href="{{route('chalet.frontend.show',$chalet->id)}}">{{__('frontend.read more')}}</a>
                         </div>
                     </div>
                 </article>
             @empty
-                <div class="text-center">No Chalets found</div>
+                <div class="text-center">{{__('frontend.No Chalets found')}}</div>
             @endforelse
                 {!! $all_chalets->appends(request()->input())->links() !!}
 

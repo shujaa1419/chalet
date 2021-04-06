@@ -8,10 +8,10 @@
                         <article class="blog-post-details">
                             <div class="post_wrapper">
                                 <div class="post_header">
-                                    <h2>About Us</h2>
+                                    <h2>{{__('frontend.About Us')}}</h2>
                                 </div>
                                 <div class="post_content">
-                                    <p>Hello</p>
+                                    <p>{{__('frontend.Hello')}}</p>
                                 </div>
                             </div>
                         </article>

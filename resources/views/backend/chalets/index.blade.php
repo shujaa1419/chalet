@@ -40,7 +40,7 @@
                             <div class="btn-group">
                                 <a href="{{ route('dashboard.chalets.edit', $chalet->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                 <a href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this chalet?') ) { document.getElementById('chalet-delete-{{ $chalet->id }}').submit(); } else { return false; }" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                <form action="{{ route('dashboard.chalets.destroy', $chalet->id) }}" method="post" id="post-delete-{{ $chalet->id }}" style="display: none;">
+                                <form action="{{ route('dashboard.chalets.destroy', $chalet->id) }}" method="post" id="chalet-delete-{{ $chalet->id }}" style="display: none;">
                                     @csrf
                                     @method('DELETE')
                                 </form>
@@ -49,7 +49,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center">No posts found</td>
+                        <td colspan="7" class="text-center">No chalets found</td>
                     </tr>
                 @endforelse
                 </tbody>

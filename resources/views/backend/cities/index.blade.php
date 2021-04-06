@@ -29,8 +29,8 @@
                         <td>
                             <div class="btn-group">
                                 <a href="{{route('dashboard.cities.edit',$city->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <a href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this city?') ) { document.getElementById('post-delete-{{ $city->id }}').submit(); } else { return false; }" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                <form action="{{route('dashboard.cities.destroy',$city->id)}}" method="post" id="post-delete-{{ $city->id }}" style="display: none;">
+                                <a href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this city?') ) { document.getElementById('city-delete-{{ $city->id }}').submit(); } else { return false; }" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <form action="{{route('dashboard.cities.destroy',$city->id)}}" method="post" id="city-delete-{{ $city->id }}" style="display: none;">
                                     @csrf
                                     @method('DELETE')
                                 </form>

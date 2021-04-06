@@ -154,6 +154,32 @@ class ChaletController extends Controller
         ]);
     }
 
+    public function destroy($id)
+    {
+
+        $chalet = Chalet::whereId($id)->first();
+
+        if ($chalet) {
+            if ($chalet->media->count() > 0) {
+                foreach ($chalet->media as $media) {
+                    if (File::exists('assets/chalets/' . $media->file_name)) {
+                        unlink('assets/chalets/' . $media->file_name);
+                    }
+                }
+            }
+            $chalet->delete();
+
+            return redirect()->route('dashboard.chalets.index')->with([
+                'message' => 'Chalet deleted successfully',
+                'alert-type' => 'success',
+            ]);
+        }
+
+        return redirect()->route('dashboard.chalets.index')->with([
+            'message' => 'Something was wrong',
+            'alert-type' => 'danger',
+        ]);
+    }
     public function destroy_chalet_media($media_id)
     {
         $media = ChaletMedia::whereId($media_id)->first();
@@ -168,8 +194,4 @@ class ChaletController extends Controller
 
     }
 
-    public function destroy()
-    {
-        
-    }
 }

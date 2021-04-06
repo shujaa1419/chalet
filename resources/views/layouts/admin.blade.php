@@ -92,7 +92,6 @@
 <script src="{{ asset('backend/js/custom.js') }}"></script>
 
 @yield('script')
-@livewireScripts
 @stack('scripts')
 </body>
 </html>

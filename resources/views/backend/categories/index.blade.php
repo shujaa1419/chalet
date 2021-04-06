@@ -29,8 +29,8 @@
                         <td>
                             <div class="btn-group">
                                 <a href="{{route('dashboard.categories.edit',$category->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <a href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this category?') ) { document.getElementById('post-delete-{{ $category->id }}').submit(); } else { return false; }" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                <form action="{{route('dashboard.categories.destroy',$category->id)}}" method="post" id="post-delete-{{ $category->id }}" style="display: none;">
+                                <a href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this category?') ) { document.getElementById('category-delete-{{ $category->id }}').submit(); } else { return false; }" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <form action="{{route('dashboard.categories.destroy',$category->id)}}" method="post" id="category-delete-{{ $category->id }}" style="display: none;">
                                     @csrf
                                     @method('DELETE')
                                 </form>

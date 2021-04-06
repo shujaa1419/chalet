@@ -7,7 +7,9 @@ use App\Models\Category;
 use App\Models\Chalet;
 use App\Models\City;
 use App\Models\Contact;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
@@ -35,7 +37,7 @@ class IndexController extends Controller
 
 
         $all_chalets = $all_chalets->whereStatus(1)->orderBy('id', 'desc')->paginate(5);
-        return view('frontend.index', compact('all_chalets','all_cities','all_categories'));
+        return view('frontend.index', compact('all_chalets', 'all_cities', 'all_categories'));
 
 
     }
@@ -139,7 +141,7 @@ class IndexController extends Controller
     {
         $all_cities = City::all();
         $all_categories = Category::all();
-        return view('frontend.contact',compact('all_cities','all_categories'));
+        return view('frontend.contact', compact('all_cities', 'all_categories'));
     }
 
     public function do_contact(Request $request)
@@ -169,10 +171,47 @@ class IndexController extends Controller
 
     }
 
+    public function customer()
+    {
+        $chalets = Chalet::all()->pluck('title', 'id');
+        $all_cities = City::all();
+        $all_categories = Category::all();
+        return view('frontend.customer', compact('all_cities', 'all_categories', 'chalets'));
+    }
+
+    public function store_customer(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required|numeric',
+            'chalet_id' => 'required',
+            'cin' => 'required',
+            'cout' => 'required'
+        ]);
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['mobile'] = $request->mobile;
+        $data['chalet_id'] = $request->chalet_id;
+        $data['cin'] = Carbon::parse($request->cin);
+        $data['cout'] = Carbon::parse($request->cout);
+
+        Customer::create($data);
+        return redirect()->route('frontend.index')->with([
+            'message' => 'Reserved Successfully',
+            'alert-type' => 'success'
+        ]);
+
+
+    }
+
     public function about()
     {
         $all_categories = Category::all();
         $all_cities = City::all();
-        return view('frontend.about',compact('all_categories','all_cities'));
-    }   
+        return view('frontend.about', compact('all_categories', 'all_cities'));
+    }
 }

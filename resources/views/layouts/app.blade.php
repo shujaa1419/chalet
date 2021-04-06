@@ -61,6 +61,9 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+@if (app()->getLocale() == 'ar')
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap-rtl.css')}}">
+@endif
 <script src="{{ asset('frontend/js/plugins.js') }}"></script>
 <script src="{{ asset('frontend/js/active.js') }}"></script>
 

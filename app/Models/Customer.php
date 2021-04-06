@@ -8,4 +8,9 @@ class Customer extends Model
 {
     protected $guarded = [];
 
+
+    public function chalet(){
+        return $this->belongsTo(Chalet::class);
+    }
+
 }

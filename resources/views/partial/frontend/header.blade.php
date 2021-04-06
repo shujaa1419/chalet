@@ -12,34 +12,38 @@
             <div class="col-lg-8 d-none d-lg-block">
                 <nav class="mainmenu__nav">
                     <ul class="meninmenu d-flex justify-content-start">
-                        <li class="drop with--one--item"><a href="{{route('frontend.index')}}">Home</a></li>
-                        <li class="drop with--one--item"><a href="{{route('chalet.frontend.about')}}">About Us</a></li>
-                        <li class="drop"><a href="javascript:void(0);">City</a>
+                        <li class="drop with--one--item"><a href="{{route('frontend.index')}}">{{__('frontend.Home')}}</a></li>
+                        <li class="drop with--one--item"><a href="{{route('chalet.frontend.about')}}">{{__('frontend.About Us')}}</a></li>
+                        <li class="drop"><a href="javascript:void(0);">{{__('frontend.City')}}</a>
                             <div class="megamenu dropdown">
                                 <ul class="item item01">
                                     @forelse($all_cities as $city)
-                                        <li><a href="{{ route('chalet.frontend.cities.chalets', $city->id) }}">{{ $city->name }}</a></li>
+                                        <li>
+                                            <a href="{{ route('chalet.frontend.cities.chalets', $city->id) }}">{{ $city->name }}</a>
+                                        </li>
 
                                     @empty
-                                        <p>no Cites</p>
+                                        <p>{{__('frontend.no Cities')}}</p>
                                     @endforelse
 
                                 </ul>
                             </div>
                         </li>
-                        <li class="drop"><a href="javascript:void(0);">Category</a>
+                        <li class="drop"><a href="javascript:void(0);">{{__('frontend.Category')}}</a>
                             <div class="megamenu dropdown">
                                 <ul class="item item01">
                                     @forelse($all_categories as $category)
-                                        <li><a href="{{ route('chalet.frontend.categories.chalets', $category->id) }}">{{ $category->name }}</a></li>
+                                        <li>
+                                            <a href="{{ route('chalet.frontend.categories.chalets', $category->id) }}">{{ $category->name }}</a>
+                                        </li>
 
                                     @empty
-                                            <p>no categories</p>
+                                        <p>{{__('frontend.no categories')}}</p>
                                     @endforelse
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="{{route('chalet.frontend.contact')}}">Contact</a></li>
+                        <li><a href="{{route('chalet.frontend.contact')}}">{{__('frontend.Contact')}}</a></li>
                     </ul>
                 </nav>
             </div>
@@ -51,21 +55,18 @@
                             <div class="content-inner">
                                 <div class="switcher-currency">
                                     <strong class="label switcher-label">
-                                        <span>My Account</span>
+                                        <span>{{__('frontend.Languages')}}</span>
                                     </strong>
                                     <div class="switcher-options">
                                         <div class="switcher-currency-trigger">
                                             <div class="setting__menu">
-                                                @guest
-                                                    <span><a href="">Login</a></span>
-                                                    <span><a href="">Register</a></span>
-                                                @else
-                                                    <span><a href="">My Dashboard</a></span>
-                                                    <span><a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></span>
-                                                    <form id="logout-form" action="" method="POST" style="display: none;">
-                                                        @csrf
-                                                    </form>
-                                                @endguest
+                                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+
+                                                    <span><a rel="alternate" hreflang="{{ $localeCode }}"
+                                                             href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                {{ $properties['native'] }}
+            </a></span>    @endforeach
+
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +117,7 @@
 {{--    {!! Form::close() !!}--}}
 
 {{--    <div class="close__wrap">--}}
-{{--        <span>close</span>--}}
+{{--        <span>{{__('frontend.close')}}</span>--}}
 {{--    </div>--}}
 {{--</div>--}}
 <!-- End Search Popup -->
@@ -125,8 +126,6 @@
 
 </div>
 <!-- End Bradcaump area -->
-
-
 
 
 {{--

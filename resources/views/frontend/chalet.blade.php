@@ -6,6 +6,8 @@
                 <div class="col-lg-9 col-12">
                     <div class="blog-details content">
                         <article class="blog-post-details">
+                            <h2>{{$chalet->title}}</h2>
+                            <br>
                             @if ($chalet->media->count() > 0)
                                 <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
@@ -27,12 +29,12 @@
                                         <a class="carousel-control-prev" href="#carouselIndicators" role="button"
                                            data-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
+                                            <span class="sr-only">{{__('frontend.Previous')}}</span>
                                         </a>
                                         <a class="carousel-control-next" href="#carouselIndicators" role="button"
                                            data-slide="next">
                                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
+                                            <span class="sr-only">{{__('frontend.Next')}}</span>
                                         </a>
 
                                     @endif
@@ -42,7 +44,6 @@
                             @endif
                             <div class="post_wrapper">
                                 <div class="post_header">
-                                    <h2>{{$chalet->title}}</h2>
                                     <div class="blog-date-categori">
                                         <ul>
                                             <li>{{$chalet->created_at->format('M d, Y')}}</li>
@@ -51,9 +52,10 @@
                                 </div>
                                 <div class="post_content">
                                     <p>{!! $chalet->description !!}</p>
+                                    <a href="{{route('chalet.frontend.customer')}}" class="btn btn-primary">{{__('frontend.Reserve Now')}}‏</a>
                                 </div>
                                 <ul class="blog_meta">
-                                    <li><a href="#">{{$chalet->approved_comments->count()}} comments</a></li>
+                                    <li>{{$chalet->approved_comments->count()}} comments</li>
                                     <li> /</li>
                                     <li>Category:<span>{{$chalet->category->name}}</span></li>
                                     <li> /</li>
@@ -80,17 +82,17 @@
                                         </div>
                                     </li>
                                 @empty
-                                    <p>No comments found.</p>
+                                    <p>{{__('frontend.No comments found.')}}</p>
                                 @endforelse
                             </ul>
                         </div>
                         <div class="comment_respond">
-                            <h3 class="reply_title">Leave a Reply <small></small></h3>
+                            <h3 class="reply_title">{{__('frontend.Leave a Reply')}}<small></small></h3>
 
                             <form class="comment__form" action="{{route('chalet.frontend.add_comment',$chalet->id)}}"
                                   method="post">
                                 @csrf
-                                <p>Your email address will not be published.Required fields are marked </p>
+                                <p>{{__('frontend.Your email address will not be published.Required fields are marked')}}</p>
                                 <div class="input__box">
                                     <textarea name="comment"
                                               placeholder="Your comment here">{{old('comment')}}</textarea>
@@ -115,7 +117,7 @@
                                     </div>
                                 </div>
                                 <div class="submite__btn">
-                                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                                    <button type="submit" class="btn btn-primary">{{__('frontend.Post Comment')}}</button>
                                 </div>
                             </form>
                         </div>

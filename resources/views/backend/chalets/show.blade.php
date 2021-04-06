@@ -67,7 +67,6 @@
                     <th width="40%">comment</th>
                     <th>Status</th>
                     <th>Created at</th>
-                    <th class="text-center" style="width: 30px;">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -77,16 +76,6 @@
                         <td>{!! $comment->comment !!}</td>
                         <td>{{ $comment->status() }}</td>
                         <td>{{ $comment->created_at->format('d-m-Y h:i a') }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <a href="javascript:void(0)" onclick="if (confirm('Are you sure to delete this comment?') ) { document.getElementById('comment-delete-{{ $comment->id }}').submit(); } else { return false; }" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                <form action="#" method="post" id="comment-delete-{{ $comment->id }}" style="display: none;">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                            </div>
-                        </td>
                     </tr>
                 @empty
                     <tr>

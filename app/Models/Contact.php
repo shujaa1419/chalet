@@ -8,4 +8,5 @@ class Contact extends Model
 {
     protected $guarded = [];
 
+
 }

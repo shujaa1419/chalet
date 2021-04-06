@@ -30,6 +30,12 @@ class Chalet extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
+    }
+
+
 
     public function approved_comments()
     {
