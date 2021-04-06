@@ -29,7 +29,7 @@ return [
     'Contact' => 'اتصل بنا',
     'Languages' => 'اللغة',
     'close' => 'أغلق',
-    
+    'Welcome to Chalite, the best site for booking chalets in Saudi Arabia. To contact us, please use the addresses below.' => 'اهلا وسهلا في موقع شاليت افضل موقع لحجز الشاليهات في السعودية  للتواصل معنا ارجو ان تستعمل العناوين بالاسفل',
 
 
 

@@ -53,16 +53,14 @@
                 <div class="col-lg-4 col-12 md-mt-40 sm-mt-40">
                     <div class="wn__address">
                         <h2 class="contact__title">{{__('frontend.Get office info.')}}</h2>
-                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                            est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                            formas humanitatis per seacula quarta decima et quinta decima. </p>
+                        <p>{{__('frontend.Welcome to Chalite, the best site for booking chalets in Saudi Arabia. To contact us, please use the addresses below.')}} </p>
                         <div class="wn__addres__wreapper">
 
                             <div class="single__address">
                                 <i class="icon-location-pin icons"></i>
                                 <div class="content">
                                     <span>{{__('frontend.address:')}}</span>
-                                    <p>666 5th Ave New York, NY, United</p>
+                                    <p>{{__('frontend.2333 al bashur - al hamra RIYADH , SA, Kingdom of Saudi Arabia')}}</p>
                                 </div>
                             </div>
 
