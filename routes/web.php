@@ -86,3 +86,7 @@ Route::prefix('dashboard')->middleware('auth')->name('dashboard.')->group(functi
 //    Route::get('/{post}', 'Frontend\IndexController@chalet_show')->name('chalet.frontend.show');
 //    Route::post('/{post}', 'Frontend\IndexController@store_comment')->name('chalet.frontend.add_comment');
 //});
+
+
+
+
