@@ -7,9 +7,7 @@ use App\Models\Category;
 use App\Models\Chalet;
 use App\Models\City;
 use App\Models\Contact;
-use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class IndexController extends Controller
@@ -37,7 +35,7 @@ class IndexController extends Controller
 
 
         $all_chalets = $all_chalets->whereStatus(1)->orderBy('id', 'desc')->paginate(5);
-        return view('frontend.index', compact('all_chalets', 'all_cities', 'all_categories'));
+        return view('frontend.index', compact('all_chalets','all_cities','all_categories'));
 
 
     }
@@ -141,7 +139,7 @@ class IndexController extends Controller
     {
         $all_cities = City::all();
         $all_categories = Category::all();
-        return view('frontend.contact', compact('all_cities', 'all_categories'));
+        return view('frontend.contact',compact('all_cities','all_categories'));
     }
 
     public function do_contact(Request $request)
@@ -170,7 +168,6 @@ class IndexController extends Controller
 
 
     }
-
     public function customer()
     {
         $chalets = Chalet::all()->pluck('title', 'id');
@@ -207,11 +204,10 @@ class IndexController extends Controller
 
 
     }
-
     public function about()
     {
         $all_categories = Category::all();
         $all_cities = City::all();
-        return view('frontend.about', compact('all_categories', 'all_cities'));
-    }
+        return view('frontend.about',compact('all_categories','all_cities'));
+    }   
 }
